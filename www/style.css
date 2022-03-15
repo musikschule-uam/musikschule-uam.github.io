@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+
+
+    --app-surface: white;
+    --app-on-surface: black;
+
+
+    --app-surface-variant: #1f1f1f;
+    --app-surface-variant-transparent: #1f1f1fa0;
+
+    --app-on-surface-variant: white;
+
+    --app-primary: #1a94f3;
+    --app-on-primary: white;
+
+    --app-secondary: #38a1f1;
+    --app-on-secondary: white;
+
+    --app-ternary: #f6c96f;
+    --app-on-ternary: black;
+
+    --app-font: 500 18px system-ui, sans-serif;
+    --app-font-title: 600 32px system-ui, sans-serif;
+    --app-font-heading: 600 24px system-ui, sans-serif;
+
+    font: var(--app-font);
+
+    color: var(--app-on-surface);
+    background-color: var(--app-surface);
+
+    display: flex;
+    flex-direction: column;
+}
+
+mua-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+h1 {
+    font: var(--app-font-title);
+}
+
+h2 {
+    font: var(--app-font-heading);
+
+}
+
+details summary {
+    font-style: italic;
+}
+
+mua-card {
+    min-width: 256px;
+}
+
+

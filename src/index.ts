@@ -1,0 +1,7 @@
+import './components/mua-header'
+import './components/mua-image-banner'
+import './components/mua-card'
+import './components/contact-info'
+import './components/mua-map'
+import './components/mua-register'
+import './components/mua-link'
