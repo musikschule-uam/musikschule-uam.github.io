@@ -1,8 +1,10 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 
 	"github.com/evanw/esbuild/pkg/api"
 )
@@ -10,8 +12,9 @@ import (
 type Command string
 
 const (
-	CommandServe Command = "serve"
-	CommandBuild Command = "build"
+	CommandServe  Command = "serve"
+	CommandBuild  Command = "build"
+	CommandDeploy Command = "deploy"
 )
 
 func main() {
@@ -36,24 +39,78 @@ func main() {
 
 	switch command {
 	case CommandBuild:
-		result := api.Build(buildOptions)
-		for _, err := range result.Errors {
-			log.Println(err)
-		}
-		if len(result.Errors) > 0 {
-			os.Exit(1)
-		}
+		build(buildOptions)
 	case CommandServe:
-		serveOptions := api.ServeOptions{
-			Port:     8080,
-			Servedir: "www/",
-		}
-		result, err := api.Serve(serveOptions, buildOptions)
-		if err != nil {
-			log.Fatal(err)
-		}
-		result.Wait()
-
+		serve(buildOptions)
+	case CommandDeploy:
+		opts := DeployOptions{}
+		opts.ScanEnv()
+		deploy(opts)
 	}
 
+}
+
+func build(opts api.BuildOptions) {
+	result := api.Build(opts)
+	for _, err := range result.Errors {
+		log.Println(err)
+	}
+	if len(result.Errors) > 0 {
+		os.Exit(1)
+	}
+}
+
+func serve(opts api.BuildOptions) {
+	result := api.Build(opts)
+	for _, err := range result.Errors {
+		log.Println(err)
+	}
+	if len(result.Errors) > 0 {
+		os.Exit(1)
+	}
+}
+
+type DeployOptions struct {
+	Repo         string
+	Token        string
+	TargetBranch string
+}
+
+func (opts *DeployOptions) ScanEnv() {
+	opts.Repo = os.Getenv("DEPLOY_REPO")
+	opts.Token = os.Getenv("DEPLOY_TOKEN")
+	opts.TargetBranch = os.Getenv("DEPLOY_TARGETBRANCH")
+}
+
+func deploy(opts DeployOptions) {
+	dir, err := ioutil.TempDir("./", "deploy")
+	if err != nil {
+		log.Fatal(err)
+	}
+	//defer os.RemoveAll(dir)
+
+	mustExec(dir, "git", "config", "--local", "user.name", "deployer")
+	mustExec(dir, "git", "config", "--local", "user.email", "deployer@musikschule-uam.de")
+	mustExec(dir, "git", "config", "--local", "user.password", opts.Token)
+
+	mustExec(dir, "git", "clone", "-b", opts.TargetBranch, opts.Repo, ".")
+	mustExec(dir, "rm", "-rf", "*")
+
+	workdir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	mustExec(dir, "cp", "-r", workdir, dir)
+
+}
+
+func mustExec(workdir string, name string, args ...string) {
+	cmd := exec.Command(name, args...)
+	cmd.Dir = workdir
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
