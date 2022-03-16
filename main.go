@@ -87,7 +87,7 @@ func deploy(opts DeployOptions) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//defer os.RemoveAll(dir)
+	defer os.RemoveAll(dir)
 
 	mustExec(dir, "git", "config", "--local", "user.name", "deployer")
 	mustExec(dir, "git", "config", "--local", "user.email", "deployer@musikschule-uam.de")
@@ -100,8 +100,10 @@ func deploy(opts DeployOptions) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	mustExec(dir, "cp", "-r", workdir, dir)
-
+	mustExec(dir, "cp", "-r", workdir+"/www/.", ".")
+	mustExec(dir, "git", "add", ".")
+	mustExec(dir, "git", "commit", "-m", "deploy")
+	mustExec(dir, "git", "push")
 }
 
 func mustExec(workdir string, name string, args ...string) {
