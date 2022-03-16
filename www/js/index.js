@@ -59,10 +59,11 @@ template.innerHTML = `
 
     <nav id="nav">
         <a href="/">Home</a>
-        <!-- Aneldung Wichtig machen gelb !!! -->
         <a class="accent" href="/anmeldungen.html">Anmeldung</a>
+        <!-- 
         <a href="/vorstand.html">Vorstand</a>
-        <a href="/faq.html">H\xE4ufige Fragen</a>
+        <a href="/faq.html">H\xE4ufige Fragen</a> 
+        -->
 
         <a href="/impressum.html">Impressum</a>
     </nav>
