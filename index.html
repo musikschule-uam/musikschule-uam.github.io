@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Musikschule UAM</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="module" src="/js/index.js"></script>
+
+    <style>
+        #contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #register {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <mua-header></mua-header>
+    <mua-image-banner src="/images/DSC05071-1920w.webp">
+        <h2>
+            Willkommen bei der Musikschule Unterallgäu Mitte e.V.<br>
+            Für mehr Freude an der Musik!
+        </h2>
+    </mua-image-banner>
+
+
+    <mua-card>
+        <h2 id="kontakt">Kontakt</h2>
+        <address>
+            <a href="tel:+49 8336 8590938">+49 8336 8590938</a><br>
+            <a href="tel:+49 176 31388235">+49 176 31388235</a><br>
+            <a href="mailto:kontakt@musikschule-uam.de">kontakt@musikschule-uam.de</a><br>
+            Marktstrasse 1<br>
+            87746 Erkheim<br>
+            Öffnungszeiten: <br>
+            nach telefonischer Vereinbarung
+        </address>
+    </mua-card>
+
+    <mua-card >
+        <div id="contacts">
+            <contact-info
+                avatarsrc="/images/avatar-peter.webp"
+                name="Peter Oswald"
+                role="Verwaltungsleitung"
+            ></contact-info>
+            <contact-info
+                avatarsrc="/images/avatar-magnus.webp"
+                name="Magnus Blank"
+                role="Musikschulleitung"
+            ></contact-info>
+        </div>
+    </mua-card>
+
+
+
+    <mua-card>
+        <h2>Unterricht für viele Instrumente</h2>
+        <p>
+            Wir bieten Musikstunden für Anfänger und Fortgeschrittene für viele gängigen Instrumente an. Wir
+            unterrichten vor allem Holz- und Blechblasinstrumente, Schlagwerk, Steich- und Zupfinstrumente, Klavier
+            sowie Gesang an.
+        </p>
+        <p>
+            In unseren Elementarkuren für Kinder lernen die Kleinen einen ersten Umgang mit Noten und erhalten
+            Gelegenheit, gemeinsam zu musizieren.
+        </p>
+
+        <p>
+            <mua-link href="/anmeldungen.html">Hier geht's zur Anmeldung</mua-link>
+        </p>
+
+
+        <div id="register">
+
+
+            <mua-register name="Musik. Grundfächer" backgroundsrc="/images/register/musikalische-grundfaecher.jpg">
+                <div slot="details">
+                    Blockflöte, Klassenmusizieren, Früherziehung, Grundausbildung
+                </div>
+            </mua-register>
+            <mua-register name="Holzblasinstrumente" backgroundsrc="/images/register/holzblasinstrumente.jpg">
+                <div slot="details">
+                    Querflöte, Klarinette, Oboe, Saxophon
+                </div>
+            </mua-register>
+            <mua-register name="Blechblasinstrumente" backgroundsrc="/images/register/blechblasinstrumente.jpg">
+                <div slot="details">
+                    Trompete, Flügelhorn, Tenorhorn, Euphonium, Posaune, Waldhorn, Tuba
+                </div>
+            </mua-register>
+            <mua-register name="Schlaginstrumente" backgroundsrc="/images/register/schlaginstrumente.jpg">
+                <div slot="details">
+                    Schlagwerk
+                </div>
+            </mua-register>
+            <mua-register name="Streichinstrumente" backgroundsrc="/images/register/streichinstrumente.jpg">
+                <div slot="details">
+                    Violine, Viola, Kontrabass
+                </div>
+            </mua-register>
+            <mua-register name="Tasteninstrumente" backgroundsrc="/images/register/tasteninstrumente.jpg">
+                <div slot="details">
+                    Klavier
+                </div>
+            </mua-register>
+            <mua-register name="Vokal-Unterricht" backgroundsrc="/images/register/vokal-unterricht.jpg">
+                <div slot="details">
+                    Gesang/Stimmbildung
+                </div>
+            </mua-register>
+            <mua-register name="Zupfinstrumente" backgroundsrc="/images/register/zupfinstrumente.jpg">
+                <div slot="details">
+                    Gitarre, E-Gitarre, E-Bass
+                </div>
+            </mua-register>
+
+        </div>
+
+
+        <p>
+            Auch ein Wunsch für ein nicht aufgeführtes Unterrichtsfach ist über 
+            <a href="/#kontakt">Kontakt</a>
+            bzw. die 
+            <a href="/anmeldungen.html">Anmeldung</a>
+            möglich.
+        </p>
+    </mua-card>
+
+    <mua-card>
+        <h2>Die neue Musikschule</h2>
+        <p>
+            Die neue Musikschule Unterallgäu Mitte e.V. wurde am 20.05.2019 in Erkheim gegründet. Die Musikschule bietet seit September 2019 dezentralen Musikunterricht quer durch die Mittes des Landkreises an.
+            Mitgliedsgemeinden sind:
+        </p>
+        <ul>
+            <li>Breitenbrunn</li>
+            <li>Erkheim</li>
+            <li>Holzgünz</li>
+            <li>Lauben (seit 7/2020)</li>
+            <li>Oberrieden</li>
+            <li>Pfaffenhausen</li>
+            <li>Salgen</li>
+            <li>Sontheim</li>
+            <li>Markt Rettenbach</li>
+        </ul>
+    </mua-card>
+
+<mua-map></mua-map>
+
+</body>
+
+</html>
