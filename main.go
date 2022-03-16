@@ -95,6 +95,8 @@ func deploy(opts DeployOptions) {
 
 	mustExec(dir, "git", "clone", "-b", opts.TargetBranch, opts.Repo, ".")
 	mustExec(dir, "rm", "-rf", "*")
+	// restore github workflows for ionos
+	mustExec(dir, "git", "checkout", ".github")
 
 	workdir, err := os.Getwd()
 	if err != nil {
