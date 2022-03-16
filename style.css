@@ -57,4 +57,4 @@ mua-card {
     min-width: 256px;
 }
 
-
+*:not(:defined) { display:none }
