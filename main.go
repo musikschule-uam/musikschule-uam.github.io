@@ -61,13 +61,15 @@ func build(opts api.BuildOptions) {
 }
 
 func serve(opts api.BuildOptions) {
-	result := api.Build(opts)
-	for _, err := range result.Errors {
-		log.Println(err)
+	serveOptions := api.ServeOptions{
+		Port:     8080,
+		Servedir: "www/",
 	}
-	if len(result.Errors) > 0 {
-		os.Exit(1)
+	result, err := api.Serve(serveOptions, opts)
+	if err != nil {
+		log.Fatal(err)
 	}
+	result.Wait()
 }
 
 type DeployOptions struct {
