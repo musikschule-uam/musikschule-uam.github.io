@@ -35,7 +35,7 @@ template.innerHTML = `
         color: var(--app-on-secondary);
         background-color: var(--app-secondary);
         text-decoration: none;
-
+        
         font-size: 20px;
         border-radius: 2px;
         padding: 2px 4px;
@@ -48,6 +48,14 @@ template.innerHTML = `
     nav a.accent {
         background-color: var(--app-ternary);
         color: var(--app-on-ternary);
+    }
+
+    nav a.current {
+        box-shadow: var(--app-on-secondary) 0 0 1px 1px;
+    }
+
+    nav a.accent.current {
+        box-shadow: var(--app-on-ternary) 0 0 1px 1px;
     }
 
 </style>
@@ -64,6 +72,8 @@ template.innerHTML = `
         -->
 
         <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+
     </nav>
 </header>
 `
@@ -73,6 +83,13 @@ class MuaHeader extends HTMLElement {
         super()
         let root = this.attachShadow({mode: 'open'})
         root.append(template.content.cloneNode(true))
+
+        let links = root.querySelectorAll('a');
+        for (let link of links) {
+            if (link.getAttribute('href') == window.location.pathname) {
+                link.classList.add('current');
+            }
+        }
     }
 }
 
