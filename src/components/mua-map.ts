@@ -161,7 +161,7 @@ class MuaMap extends HTMLElement {
 
 
         const mitgliederClusterSource = new ol.source.Cluster({
-            distance: 48,
+            distance: 36,
             minDistance: 0,
             source: mitgliederSource,
             
