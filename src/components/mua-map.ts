@@ -128,7 +128,7 @@ class MuaMap extends HTMLElement {
 
         function labelStyleFunc(title: string, cluster: boolean) {
             let text = new ol.style.Text({
-                font: "600 16px system-ui, sans-serif",
+                font: "600 14px system-ui, sans-serif",
                 fill: new ol.style.Fill({ color: 'white' }),
                 backgroundFill: new ol.style.Fill({ color: 'black' }),
                 padding: [2, 8, 2, 8],
