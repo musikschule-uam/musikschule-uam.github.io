@@ -126,18 +126,18 @@ class MuaMap extends HTMLElement {
 
         let {default: ol} = await import('../../libs/openlayers/v6.13.0-dist/ol');
 
-        function labelStyleFunc(title: string) {
-            return new ol.style.Style({
-                text: new ol.style.Text({
-                    font: "600 16px system-ui, sans-serif",
-                    fill: new ol.style.Fill({ color: 'white' }),
-                    backgroundFill: new ol.style.Fill({ color: 'black' }),
-                    backgroundStroke: new ol.style.Stroke({ color: 'white', width: 2, lineJoin: 'round' }),
-
-                    padding: [2, 8, 2, 8],
-                    text: title,
-                })
+        function labelStyleFunc(title: string, cluster: boolean) {
+            let text = new ol.style.Text({
+                font: "600 16px system-ui, sans-serif",
+                fill: new ol.style.Fill({ color: 'white' }),
+                backgroundFill: new ol.style.Fill({ color: 'black' }),
+                padding: [2, 8, 2, 8],
+                text: title,
             });
+
+            return new ol.style.Style({
+                text: text
+            });;
         }
 
         var mitgliederSource = new ol.source.Vector();
@@ -174,10 +174,10 @@ class MuaMap extends HTMLElement {
                 const clusterSize = f.get('features').length;
                 if (clusterSize > 1) {
                     
-                    return labelStyleFunc(`${clusterSize} Mitglieder`);
+                    return labelStyleFunc(`(${clusterSize})`, true);
                 }
                 let m = f.get('features')[0].getProperties() as Mitglied;
-                return labelStyleFunc(m.Name);
+                return labelStyleFunc(m.Name, false);
             },
         });
         var layerMitgliederBorder = new ol.layer.Vector({

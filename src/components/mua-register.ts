@@ -6,7 +6,7 @@ template.innerHTML = `
 #register {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 
     background-color: lightgrey;
@@ -21,11 +21,6 @@ template.innerHTML = `
     cursor: pointer;
     user-select: none;
 }
-
-#register:hover {
-    filter: brightness(1.25);
-}
-
 #modal {
     display: none;
 }
@@ -45,6 +40,10 @@ slot[name=details] {
     margin: 8px 0;
 }
 
+slot[name=action] {
+    display: block;
+    align-self: flex-end;
+}
 </style>
 
 <div id="register">
@@ -52,6 +51,9 @@ slot[name=details] {
         <summary id="name"></summary>
         <slot name="details"></slot>
     </details>
+
+    <slot name="action">
+    </slot>
 </div>
 
 `
@@ -68,11 +70,11 @@ class MuaRegister extends HTMLElement {
 
         const details = root.getElementById('details') as HTMLDetailsElement;
         register.addEventListener('click', e => {
-            details.open = !details.open;
-            e.preventDefault();
+            if (e.target == register) {
+                details.open = !details.open;
+            }
         });
         
-
         const name = root.getElementById('name') as HTMLDivElement;
         name.innerText = this.getAttribute('name');
     }
