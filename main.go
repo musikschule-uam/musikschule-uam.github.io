@@ -91,9 +91,9 @@ func deploy(opts DeployOptions) {
 	}
 	defer os.RemoveAll(dir)
 
-	mustExec(dir, "git", "config", "--local", "user.name", "deployer")
-	mustExec(dir, "git", "config", "--local", "user.email", "deployer@musikschule-uam.de")
-	mustExec(dir, "git", "config", "--local", "user.password", opts.Token)
+	mustExec(dir, "git", "config", "--global", "user.name", "deployer")
+	mustExec(dir, "git", "config", "--global", "user.email", "deployer@musikschule-uam.de")
+	mustExec(dir, "git", "config", "--global", "user.password", opts.Token)
 
 	mustExec(dir, "git", "clone", "-b", opts.TargetBranch, opts.Repo, ".")
 	mustExec(dir, "rm", "-rf", "*")
