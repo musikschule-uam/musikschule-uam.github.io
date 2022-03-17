@@ -10,7 +10,7 @@ import (
 )
 
 func queryURL(landkreis string) string {
-	u, err := url.Parse(`https://services-eu1.arcgis.com/COgyL97RL54KYdTZ/ArcGIS/rest/services/Landkreisgrenzen_Bayern/FeatureServer/0/query`)
+	u, err := url.Parse(`https://services-eu1.arcgis.com/COgyL97RL54KYdTZ/ArcGIS/rest/services/StMB_AGOL_Landkreisgrenzen_Bayern_vereinfacht/FeatureServer/0/query`)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -59,8 +59,6 @@ func main() {
 			encoder := json.NewEncoder(os.Stdout)
 			encoder.SetIndent("", "")
 			encoder.Encode(table)
-
-			log.Println()
 
 		}
 
