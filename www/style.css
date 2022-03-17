@@ -41,12 +41,11 @@ mua-header {
 }
 
 h1 {
-    font: var(--app-font-title);
+    font: var(--app-font-heading);
 }
 
 h2 {
     font: var(--app-font-heading);
-
 }
 
 details summary {
