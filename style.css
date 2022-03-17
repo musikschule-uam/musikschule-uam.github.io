@@ -58,3 +58,7 @@ mua-card {
 }
 
 *:not(:defined) { display:none }
+
+address {
+    all: unset;
+}
