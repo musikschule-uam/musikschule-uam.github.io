@@ -355,17 +355,18 @@ var MuaMap = class extends HTMLElement {
   }
   async initMap(mapElement) {
     let { default: ol } = await import("./ol-H2ONBIAB.js");
-    function labelStyleFunc(title) {
-      return new ol.style.Style({
-        text: new ol.style.Text({
-          font: "600 16px system-ui, sans-serif",
-          fill: new ol.style.Fill({ color: "white" }),
-          backgroundFill: new ol.style.Fill({ color: "black" }),
-          backgroundStroke: new ol.style.Stroke({ color: "white", width: 2, lineJoin: "round" }),
-          padding: [2, 8, 2, 8],
-          text: title
-        })
+    function labelStyleFunc(title, cluster) {
+      let text = new ol.style.Text({
+        font: "600 16px system-ui, sans-serif",
+        fill: new ol.style.Fill({ color: "white" }),
+        backgroundFill: new ol.style.Fill({ color: "black" }),
+        padding: [2, 8, 2, 8],
+        text: title
       });
+      return new ol.style.Style({
+        text
+      });
+      ;
     }
     var mitgliederSource = new ol.source.Vector();
     var mitgliederBorderSource = new ol.source.Vector();
@@ -393,10 +394,10 @@ var MuaMap = class extends HTMLElement {
       style: (f) => {
         const clusterSize = f.get("features").length;
         if (clusterSize > 1) {
-          return labelStyleFunc(`${clusterSize} Mitglieder`);
+          return labelStyleFunc(`(${clusterSize})`, true);
         }
         let m = f.get("features")[0].getProperties();
-        return labelStyleFunc(m.Name);
+        return labelStyleFunc(m.Name, false);
       }
     });
     var layerMitgliederBorder = new ol.layer.Vector({
@@ -434,7 +435,7 @@ template6.innerHTML = `
 #register {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 
     background-color: lightgrey;
@@ -449,11 +450,6 @@ template6.innerHTML = `
     cursor: pointer;
     user-select: none;
 }
-
-#register:hover {
-    filter: brightness(1.25);
-}
-
 #modal {
     display: none;
 }
@@ -473,6 +469,10 @@ slot[name=details] {
     margin: 8px 0;
 }
 
+slot[name=action] {
+    display: block;
+    align-self: flex-end;
+}
 </style>
 
 <div id="register">
@@ -480,6 +480,9 @@ slot[name=details] {
         <summary id="name"></summary>
         <slot name="details"></slot>
     </details>
+
+    <slot name="action">
+    </slot>
 </div>
 
 `;
@@ -493,8 +496,9 @@ var MuaRegister = class extends HTMLElement {
     register.style.backgroundSize = `cover`;
     const details = root.getElementById("details");
     register.addEventListener("click", (e) => {
-      details.open = !details.open;
-      e.preventDefault();
+      if (e.target == register) {
+        details.open = !details.open;
+      }
     });
     const name = root.getElementById("name");
     name.innerText = this.getAttribute("name");
