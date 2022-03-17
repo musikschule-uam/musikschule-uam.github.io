@@ -20,3 +20,5 @@ jobs:
 
     - name: Build Site
       run: go run main.go build
+    - name: Deploy Site
+      run: DEPLOY_REPO=git@github.com:peter-mueller/musikschule-uam.git DEPLOY_TARGETBRANCH=ionos-pages  go run main.go deploy
