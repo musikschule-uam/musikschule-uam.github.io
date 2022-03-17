@@ -61,3 +61,7 @@ mua-card {
 address {
     all: unset;
 }
+
+dl dt {
+    font-weight: 600;
+}
