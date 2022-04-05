@@ -66,9 +66,11 @@ template.innerHTML = `
     <nav id="nav">
         <a href="/">Home</a>
         <a class="accent" href="/anmeldungen.html">Anmeldung</a>
-        <!-- 
         <a href="/vorstand.html">Vorstand</a>
+
+        <!-- 
         <a href="/faq.html">Häufige Fragen</a> 
+
         -->
 
         <a href="/impressum.html">Impressum</a>

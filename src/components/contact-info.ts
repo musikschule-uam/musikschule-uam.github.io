@@ -53,14 +53,6 @@ class ContactInfo extends HTMLElement {
         role.innerText = this.getAttribute('role');
 
 
-        if (this.hasAttribute("flipped")) {
-            const container = root.getElementById('container');
-            const info = root.getElementById('info');
-
-            container.prepend(info);
-            container.append(avatar)
-        }
-
     }
 }
 
