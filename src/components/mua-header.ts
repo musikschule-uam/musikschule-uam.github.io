@@ -67,12 +67,7 @@ template.innerHTML = `
         <a href="/">Home</a>
         <a class="accent" href="/anmeldungen.html">Anmeldung</a>
         <a href="/vorstand.html">Vorstand</a>
-
-        <!-- 
-        <a href="/faq.html">Häufige Fragen</a> 
-
-        -->
-
+        <a href="/faq.html">FAQs</a> 
         <a href="/impressum.html">Impressum</a>
         <a href="/datenschutz.html">Datenschutz</a>
 
