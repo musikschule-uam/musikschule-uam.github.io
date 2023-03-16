@@ -5,8 +5,15 @@ import olCss from '../../libs/openlayers/v6.13.0-dist/ol.css';
 var template = document.createElement('template') as HTMLTemplateElement;
 template.innerHTML = `
 <style>
+
+:host {
+    display: block;
+    height: 300px;
+    
+}
+
 #map {
-    height: 400px;
+    height: 100%;
     width: 100%;
 }
 
