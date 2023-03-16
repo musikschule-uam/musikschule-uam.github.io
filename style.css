@@ -30,6 +30,7 @@ body {
     background-color: var(--app-surface);
 
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
 }
 

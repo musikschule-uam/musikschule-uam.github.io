@@ -216,8 +216,15 @@ var ol_default = '.ol-box{box-sizing:border-box;border-radius:2px;border:1.5px s
 var template5 = document.createElement("template");
 template5.innerHTML = `
 <style>
+
+:host {
+    display: block;
+    height: 300px;
+    
+}
+
 #map {
-    height: 400px;
+    height: 100%;
     width: 100%;
 }
 

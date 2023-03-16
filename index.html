@@ -2,180 +2,174 @@
 <html lang="de">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Wir unterrichten vor allem Holz- und Blechblasinstrumente, Schlagwerk, Streich- und Zupfinstrumente, Klavier sowie Gesang.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Wir unterrichten vor allem Holz- und Blechblasinstrumente, Schlagwerk, Streich- und Zupfinstrumente, Klavier sowie Gesang.">
 
-    <title>Musikschule Unterallgäu Mitte e.V.</title>
-    <link rel="stylesheet" href="/style.css">
+  <title>Musikschule Unterallgäu Mitte e.V.</title>
+  <link rel="stylesheet" href="/style.css">
 
-    <script type="module" src="/js/index.js"></script>
+  <script type="module" src="/js/index.js"></script>
 
-    <style>
-        #contacts {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+  <style>
+    #contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-        #register {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-    </style>
+    #register {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+  </style>
 </head>
 
 <body>
-    <mua-header></mua-header>
-    <mua-image-banner src="/images/DSC05071-1920w.webp">
-        <h1>
-            Willkommen bei der Musikschule Unterallgäu Mitte e.V.<br>
-            Für mehr Freude an der Musik!
-        </h1>
-    </mua-image-banner>
+  <mua-header></mua-header>
+  <mua-image-banner src="/images/DSC05071-1920w.webp">
+    <h1>
+      Willkommen bei der Musikschule Unterallgäu Mitte e.V.<br>
+      Für mehr Freude an der Musik!
+    </h1>
+  </mua-image-banner>
 
 
-    <mua-card>
-        <h2 id="kontakt">Kontakt</h2>
-        <address>
-            <a href="tel:+4983368590938">+49 8336 8590938</a><br>
-            <a href="tel:+4917631388235">+49 176 31388235</a><br>
-            <a href="mailto:kontakt@musikschule-uam.de">kontakt@musikschule-uam.de</a><br>
-            Marktstrasse 1<br>
-            87746 Erkheim<br>
-            Öffnungszeiten: <br>
-            nach telefonischer Vereinbarung
-        </address>
-    </mua-card>
+  <mua-card>
+    <h2 id="kontakt">Kontakt</h2>
+    <address>
+      <a href="tel:+4983368590938">+49 8336 8590938</a><br>
+      <a href="tel:+4917631388235">+49 176 31388235</a><br>
+      <a href="mailto:kontakt@musikschule-uam.de">kontakt@musikschule-uam.de</a><br>
+      Marktstrasse 1<br>
+      87746 Erkheim<br>
+      Öffnungszeiten: <br>
+      nach telefonischer Vereinbarung
+    </address>
+  </mua-card>
 
-    <mua-card >
-        <div id="contacts">
-            <contact-info
-                avatarsrc="/images/avatar-peter.webp"
-                name="Peter Oswald"
-                role="Verwaltungsleitung"
-            ></contact-info>
-            <contact-info
-                avatarsrc="/images/avatar-magnus.webp"
-                name="Magnus Blank"
-                role="Musikschulleitung"
-            ></contact-info>
+  <mua-card>
+    <div id="contacts">
+      <contact-info avatarsrc="/images/avatar-peter.webp" name="Peter Oswald" role="Verwaltungsleitung"></contact-info>
+      <contact-info avatarsrc="/images/avatar-magnus.webp" name="Magnus Blank" role="Musikschulleitung"></contact-info>
+    </div>
+  </mua-card>
+
+  <mua-card>
+    <h2>Unterricht für viele Instrumente</h2>
+    <p>
+      Wir bieten Musikstunden für Anfänger und Fortgeschrittene für viele gängige Instrumente an. Wir
+      unterrichten vor allem Holz- und Blechblasinstrumente, Schlagwerk, Streich- und Zupfinstrumente, Klavier
+      sowie Gesang.
+    </p>
+    <p>
+      In unseren Elementarkursen für Kinder lernen die Kleinen einen ersten Umgang mit Noten und erhalten die
+      Gelegenheit gemeinsam zu musizieren.
+    </p>
+
+    <div id="register">
+
+
+      <mua-register name="Musik. Grundfächer" backgroundsrc="/images/register/musikalische-grundfaecher.jpg">
+        <div slot="details">
+          Blockflöte, Klassenmusizieren, Früherziehung, Grundausbildung
         </div>
-    </mua-card>
-
-    <mua-card>
-        <h2>Unterricht für viele Instrumente</h2>
-        <p>
-            Wir bieten Musikstunden für Anfänger und Fortgeschrittene für viele gängige Instrumente an. Wir
-            unterrichten vor allem Holz- und Blechblasinstrumente, Schlagwerk, Streich- und Zupfinstrumente, Klavier
-            sowie Gesang.
-        </p>
-        <p>
-            In unseren Elementarkursen für Kinder lernen die Kleinen einen ersten Umgang mit Noten und erhalten die
-            Gelegenheit gemeinsam zu musizieren.
-        </p>
-
-        <div id="register">
-
-
-            <mua-register name="Musik. Grundfächer" backgroundsrc="/images/register/musikalische-grundfaecher.jpg">
-                <div slot="details">
-                    Blockflöte, Klassenmusizieren, Früherziehung, Grundausbildung
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Holzblasinstrumente" backgroundsrc="/images/register/holzblasinstrumente.jpg">
-                <div slot="details">
-                    Querflöte, Klarinette, Oboe, Saxophon
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Blechblasinstrumente" backgroundsrc="/images/register/blechblasinstrumente.jpg">
-                <div slot="details">
-                    Trompete, Flügelhorn, Tenorhorn, Euphonium, Posaune, Waldhorn, Tuba
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Schlaginstrumente" backgroundsrc="/images/register/schlaginstrumente.jpg">
-                <div slot="details">
-                    Schlagwerk
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Streichinstrumente" backgroundsrc="/images/register/streichinstrumente.jpg">
-                <div slot="details">
-                    Violine, Viola, Kontrabass
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Tasteninstrumente" backgroundsrc="/images/register/tasteninstrumente.jpg">
-                <div slot="details">
-                    Klavier
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Vokal-Unterricht" backgroundsrc="/images/register/vokal-unterricht.jpg">
-                <div slot="details">
-                    Gesang/Stimmbildung
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-            <mua-register name="Zupfinstrumente" backgroundsrc="/images/register/zupfinstrumente.jpg">
-                <div slot="details">
-                    Gitarre, E-Gitarre, E-Bass
-                </div>
-                <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
-            </mua-register>
-
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Holzblasinstrumente" backgroundsrc="/images/register/holzblasinstrumente.jpg">
+        <div slot="details">
+          Querflöte, Klarinette, Oboe, Saxophon
         </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Blechblasinstrumente" backgroundsrc="/images/register/blechblasinstrumente.jpg">
+        <div slot="details">
+          Trompete, Flügelhorn, Tenorhorn, Euphonium, Posaune, Waldhorn, Tuba
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Schlaginstrumente" backgroundsrc="/images/register/schlaginstrumente.jpg">
+        <div slot="details">
+          Schlagwerk
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Streichinstrumente" backgroundsrc="/images/register/streichinstrumente.jpg">
+        <div slot="details">
+          Violine, Viola, Kontrabass
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Tasteninstrumente" backgroundsrc="/images/register/tasteninstrumente.jpg">
+        <div slot="details">
+          Klavier
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Vokal-Unterricht" backgroundsrc="/images/register/vokal-unterricht.jpg">
+        <div slot="details">
+          Gesang/Stimmbildung
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+      <mua-register name="Zupfinstrumente" backgroundsrc="/images/register/zupfinstrumente.jpg">
+        <div slot="details">
+          Gitarre, E-Gitarre, E-Bass
+        </div>
+        <mua-link slot="action" href="/anmeldungen.html">Anmelden</mua-link>
+      </mua-register>
+
+    </div>
 
 
-        <p>
-            Auch ein Wunsch für ein nicht aufgeführtes Unterrichtsfach ist über 
-            <a href="/#kontakt">Kontakt</a>
-            bzw. die 
-            <a href="/anmeldungen.html">Anmeldung</a>
-            möglich.
-        </p>
-    </mua-card>
+    <p>
+      Auch ein Wunsch für ein nicht aufgeführtes Unterrichtsfach ist über
+      <a href="/#kontakt">Kontakt</a>
+      bzw. die
+      <a href="/anmeldungen.html">Anmeldung</a>
+      möglich.
+    </p>
+  </mua-card>
 
-    <mua-card>
-        <h2>Die neue Musikschule</h2>
-        <p>
-            Die neue Musikschule Unterallgäu Mitte e.V. wurde am 20.05.2019 in Erkheim gegründet. 
-            Die Musikschule bietet seit September 2019 dezentralen Musikunterricht quer durch die Mitte des Landkreises an.
-            Mitgliedsgemeinden sind:
-        </p>
-        <dl>
-            <dt>ab 05.2019:</dt>
-            <dd>Breitenbrunn</dd>
-            <dd>Erkheim</dd>
-            <dd>Holzgünz</dd>
-            <dd>Oberrieden</dd>
-            <dd>Pfaffenhausen</dd>
-            <dd>Salgen</dd>
-            <dd>Sontheim</dd>
+  <mua-card>
+    <h2>Die neue Musikschule</h2>
+    <p>
+      Die neue Musikschule Unterallgäu Mitte e.V. wurde am 20.05.2019 in Erkheim gegründet.
+      Die Musikschule bietet seit September 2019 dezentralen Musikunterricht quer durch die Mitte des Landkreises an.
+      Mitgliedsgemeinden sind:
+    </p>
+    <dl>
+      <dt>ab 05.2019:</dt>
+      <dd>Breitenbrunn</dd>
+      <dd>Erkheim</dd>
+      <dd>Holzgünz</dd>
+      <dd>Oberrieden</dd>
+      <dd>Pfaffenhausen</dd>
+      <dd>Salgen</dd>
+      <dd>Sontheim</dd>
 
-            <dt>ab 07.2020:</dt>
-            <dd>Lauben</dd>
+      <dt>ab 07.2020:</dt>
+      <dd>Lauben</dd>
 
-            <dt>ab 09.2021:</dt>
-            <dd>Markt Rettenbach</dd>
-        
-            <dt>ab 09.2022:</dt>
-            <dd>Kronburg</dd>
-            <dd>Legau</dd>
-            <dd>Lautrach</dd>
-            <dd>Westerheim</dd>
-        </dl>
-    </mua-card>
+      <dt>ab 09.2021:</dt>
+      <dd>Markt Rettenbach</dd>
 
-    <mua-card>
-        <mua-map></mua-map>
-    </mua-card>
+      <dt>ab 09.2022:</dt>
+      <dd>Kronburg</dd>
+      <dd>Legau</dd>
+      <dd>Lautrach</dd>
+      <dd>Westerheim</dd>
+    </dl>
+  </mua-card>
+
+  <mua-card>
+    <mua-map></mua-map>
+    <a href="karte.html">Karte in groß öffnen</a>
+  </mua-card>
 </body>
 
 </html>
