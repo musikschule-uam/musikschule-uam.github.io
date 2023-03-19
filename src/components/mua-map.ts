@@ -63,37 +63,37 @@ interface Mitglied {
 
 var Mitglieder: Mitglied[] = [
     { 
-        Name: "Breitenbrunn", 
+        Name: "Breitenbrunn",
         Lat: 48.1371498, Lon: 10.4006665,
         Border: BorderBreitenbrunn.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Erkheim", 
+        Name: "Markt Erkheim",
         Lat: 48.0379981, Lon: 10.3358813, 
         Border: BorderErkheim.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Holzgünz", 
+        Name: "Holzgünz",
         Lat: 48.0243576, Lon: 10.2580843,
         Border: BorderHolzguenz.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Lauben", 
+        Name: "Lauben",
         Lat: 48.0591683, Lon: 10.2900307,
         Border: BorderLauben.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Oberrieden", 
+        Name: "Oberrieden",
         Lat: 48.0888716, Lon: 10.4260227,
         Border: BorderOberrieden.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Pfaffenhausen", 
+        Name: "Pfaffenhausen",
         Lat: 48.1196711, Lon: 10.454339,
         Border: BorderPfaffenhausen.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Salgen", 
+        Name: "Salgen",
         Lat: 48.1305896, Lon: 10.4783375,
         Border: BorderSalgen.Values.map(v => { return { Lat: v[0], Lon: v[1]}})
     },
@@ -108,17 +108,17 @@ var Mitglieder: Mitglied[] = [
         Border: BorderMarktRettenbach.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Legau", 
+        Name: "Marktgemeinde Legau",
         Lat: 47.8566773, Lon: 10.1292599,
         Border: BorderLegau.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Lautrach", 
+        Name: "Lautrach",
         Lat: 47.8967411, Lon: 10.1164635,
         Border: BorderLautrach.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
     { 
-        Name: "Kronburg", 
+        Name: "Kronburg",
         Lat: 47.9046825, Lon: 10.1567595,
         Border: BorderKronburg.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
