@@ -260,7 +260,7 @@ var Mitglieder = [
     })
   },
   {
-    Name: "Erkheim",
+    Name: "Markt Erkheim",
     Lat: 48.0379981,
     Lon: 10.3358813,
     Border: BorderErkheim.Values.map((v) => {
@@ -324,7 +324,7 @@ var Mitglieder = [
     })
   },
   {
-    Name: "Legau",
+    Name: "Marktgemeinde Legau",
     Lat: 47.8566773,
     Lon: 10.1292599,
     Border: BorderLegau.Values.map((v) => {
