@@ -128,6 +128,10 @@ var Mitglieder: Mitglied[] = [
         Lat: 48.0155586, Lon: 10.3018677,
         Border: BorderWesterheim.Values.map(v => { return { Lat: v[0], Lon: v[1] };})
     },
+    {
+        Name: "Ungerhausen",
+        Lat: 48.005556, Lon: 10.266667,
+    },
 ]
 
 
