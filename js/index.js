@@ -354,6 +354,11 @@ var Mitglieder = [
     Border: BorderWesterheim.Values.map((v) => {
       return { Lat: v[0], Lon: v[1] };
     })
+  },
+  {
+    Name: "Ungerhausen",
+    Lat: 48.005556,
+    Lon: 10.266667
   }
 ];
 var Landkreisgrenzen = [
