@@ -65,11 +65,19 @@ func serve(opts api.BuildOptions) {
 		Port:     8080,
 		Servedir: "www/",
 	}
-	result, err := api.Serve(serveOptions, opts)
+
+	ctx, ctxErr := api.Context(opts)
+	if ctxErr != nil {
+		log.Fatal(ctxErr)
+	}
+
+	_, err := ctx.Serve(serveOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
-	result.Wait()
+
+	// Do not exit if we're in serve mode
+	<-make(chan struct{})
 }
 
 type DeployOptions struct {
