@@ -4,64 +4,124 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"net/http"
-	"net/url"
 	"os"
+
+	"github.com/twpayne/go-geom"
+	shapefile "github.com/twpayne/go-shapefile"
+
+	"github.com/icholy/utm"
 )
 
-func queryURL(gemeinde string) string {
-	u, err := url.Parse(`https://services-eu1.arcgis.com/COgyL97RL54KYdTZ/ArcGIS/rest/services/Gemeindegrenzen_Bayern_vereinfacht/FeatureServer/0/query`)
-	if err != nil {
-		log.Fatal(err)
-	}
+type Gemeinde struct {
+	Name    string
+	Borders []JSONTable
+}
 
-	values := u.Query()
-	values.Add("where", fmt.Sprintf(`BEZ_GEM='%s'`, gemeinde))
-	values.Add("f", "pgeojson")
-	u.RawQuery = values.Encode()
+type GemeindeName struct {
+	Name                    string
+	Verwaltungsgemeinschaft string
+}
 
-	return u.String()
+var gemeindeNamen = []GemeindeName{
+	{Name: "Breitenbrunn"},
+	{Name: "Erkheim"},
+	{Name: "Holzgünz"},
+	{Name: "Lauben", Verwaltungsgemeinschaft: "Verwaltungsgemeinschaft Erkheim"},
+	{Name: "Oberrieden"},
+	{Name: "Pfaffenhausen"},
+	{Name: "Salgen"},
+	{Name: "Sontheim"},
+	{Name: "Markt Rettenbach"},
+	{Name: "Legau"},
+	{Name: "Lautrach"},
+	{Name: "Kronburg"},
+	{Name: "Westerheim"},
+	{Name: "Ungerhausen"},
 }
 
 func main() {
-	gemeinde := os.Args[1]
 
-	res, err := http.Get(queryURL(gemeinde))
+	gemeinden := make([]Gemeinde, 0)
+
+	for _, name := range gemeindeNamen {
+		var g = Gemeinde{
+			Name: name.Name,
+		}
+
+		polygon, err := findGemeinde(name)
+		if err != nil {
+
+			// https://geodaten.bayern.de/opengeodata/OpenDataDetail.html?pn=verwaltung
+			scanner, err := shapefile.NewScannerFromZipFile("alkis-verwaltung.zip", nil)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			for scanner.Next() {
+				_, _, dbf := scanner.Scan()
+				if len(dbf) < 5 {
+					continue
+				}
+				fmt.Println(dbf)
+			}
+
+			log.Fatalln(err)
+
+		}
+
+		for _, coords := range polygon.Coords() {
+
+			table := JSONTable{
+				Header: []string{"lat", "lon"},
+				Values: make([][]any, len(coords)),
+			}
+			for i, coord := range coords {
+				zone, _ := utm.ParseZone("32N")
+				zone.Letter = 'N'
+				latitude, longitude := zone.ToLatLon(coord.X(), coord.Y())
+				table.Values[i] = []any{latitude, longitude}
+			}
+
+			g.Borders = append(g.Borders, table)
+		}
+
+		gemeinden = append(gemeinden, g)
+	}
+
+	encoder := json.NewEncoder(os.Stdout)
+	encoder.SetIndent("", "")
+	encoder.Encode(gemeinden)
+
+}
+
+func findGemeinde(gemeinde GemeindeName) (*geom.Polygon, error) {
+
+	// https://geodaten.bayern.de/opengeodata/OpenDataDetail.html?pn=verwaltung
+	scanner, err := shapefile.NewScannerFromZipFile("alkis-verwaltung.zip", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.StatusCode != 200 {
-		log.Fatalf("failed with status: %s", res.Status)
-	}
-
-	featurecollection := featurecollection{}
-	json.NewDecoder(res.Body).Decode(&featurecollection)
-
-	if len(featurecollection.Features) == 0 {
-		log.Fatalf("did not find a result for: %s", queryURL(gemeinde))
-	}
-
-	for i, feature := range featurecollection.Features {
-		log.Printf("Result[%d]:\n", i)
-
-		ll := feature.Geometry.Coordinates[0]
-
-		table := JSONTable{
-			Header: []string{"lat", "lon"},
-			Values: make([][]any, len(ll)),
+	for scanner.Next() {
+		shp, _, dbf := scanner.Scan()
+		if len(dbf) < 5 {
+			continue
 		}
-		for i := range ll {
-			latlon := ll[i].LatLon()
-			table.Values[i] = []any{latlon.Lat, latlon.Lon}
+		name := dbf[4].(string)
+		if gemeinde.Name != name {
+			continue
 		}
-		encoder := json.NewEncoder(os.Stdout)
-		encoder.SetIndent("", "")
-		encoder.Encode(table)
+
+		verwaltungsgemeinschaft := dbf[8].(string)
+		v := gemeinde.Verwaltungsgemeinschaft
+		if v != "" && v != verwaltungsgemeinschaft {
+			continue
+		}
+
+		return shp.Geom.(*geom.Polygon), nil
+
 	}
-
-	log.Printf("Found %d results", len(featurecollection.Features))
-
+	return nil, fmt.Errorf("gemeinde %s not found", gemeinde)
 }
 
 type JSONTable struct {
@@ -72,25 +132,4 @@ type JSONTable struct {
 type LatLon struct {
 	Lat float64
 	Lon float64
-}
-
-type featurecollection struct {
-	Features []feature `json:"features"`
-}
-
-type feature struct {
-	Geometry polygon `json:"geometry"`
-}
-
-type polygon struct {
-	Coordinates [][]lonlat `json:"coordinates"`
-}
-
-type lonlat [2]float64
-
-func (ll lonlat) LatLon() LatLon {
-	return LatLon{
-		Lat: ll[1],
-		Lon: ll[0],
-	}
 }
