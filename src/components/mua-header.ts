@@ -61,7 +61,7 @@ template.innerHTML = `
 </style>
 
 <header>
-    <div id="title">Musikschule UA</div>
+    <div id="title">Musikschule Unterallgäu</div>
 
     <nav id="nav">
         <a href="/">Home</a>
