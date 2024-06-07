@@ -12,7 +12,7 @@ require golang.org/x/exp v0.0.0-20240205201215-2c58cdc269a3 // indirect
 
 require (
 	github.com/twpayne/go-shapefile v0.0.1
-	golang.org/x/net v0.20.0 // indirect
+	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )
