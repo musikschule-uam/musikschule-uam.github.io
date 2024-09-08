@@ -37,6 +37,7 @@ var gemeindeNamen = []GemeindeName{
 	{Name: "Kronburg"},
 	{Name: "Westerheim"},
 	{Name: "Ungerhausen"},
+	{Name: "Kammlach"},
 }
 
 func main() {

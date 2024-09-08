@@ -136,6 +136,11 @@ var Mitglieder: Mitglied[] = [
         Lat: 48.005556, Lon: 10.266667,
         Borders: findGemeindeBorders("Ungerhausen"),
     },
+    {
+        Name: "Kammlach",
+        Lat: 48.052673, Lon: 10.418024,
+        Borders: findGemeindeBorders("Kammlach"),
+    },
 ]
 
 
