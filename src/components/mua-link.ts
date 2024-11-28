@@ -4,7 +4,7 @@ template.innerHTML = `
 <style>
     a {
         color: var(--app-on-secondary);
-        background-color: var(--app-secondary);
+        background-color: var(--app-primary-container);
         text-decoration: none;
 
         font-size: 20px;
@@ -17,7 +17,7 @@ template.innerHTML = `
     }
 
     a.accent {
-        background-color: var(--app-ternary);
+        background-color: var(--app-ternary-container);
         color: var(--app-on-ternary);
     }
 

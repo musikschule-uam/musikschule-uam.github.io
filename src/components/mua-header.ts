@@ -4,14 +4,15 @@ template.innerHTML = `
 <style>
     header {
         padding: 8px 16px 8px 16px;
-        color: var(--app-on-primary);
-        background-color: var(--app-primary);
+        color: var(--app-primary);
+        background-color: var(--app-surface-container-low);
 
         font: var(--app-font);
 
         display: flex;
         flex-direction: column; 
         gap: 8px;
+        border-bottom: 2px solid var(--app-primary);
     }
 
     @media(min-width: 1000px) {
@@ -21,6 +22,10 @@ template.innerHTML = `
     }
 
     #title {
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    	gap: 8px;
         font: var(--app-font-title);
     }
 
@@ -33,7 +38,7 @@ template.innerHTML = `
 
     nav a {
         color: var(--app-on-secondary);
-        background-color: var(--app-secondary);
+        background-color: var(--app-primary);
         text-decoration: none;
         
         font-size: 20px;
@@ -46,7 +51,7 @@ template.innerHTML = `
     }
 
     nav a.accent {
-        background-color: var(--app-ternary);
+        background-color: var(--app-ternary-container);
         color: var(--app-on-ternary);
     }
 
@@ -61,8 +66,11 @@ template.innerHTML = `
 </style>
 
 <header>
-    <div id="title">Musikschule Unterallgäu</div>
-
+	<div id="title">
+    	<img width="32px" height="32px" src="/images/logo.png">
+   		<div>Musikschule Unterallgäu</div>
+	</div>
+	
     <nav id="nav">
         <a href="/">Home</a>
         <a class="accent" href="/anmeldungen.html">Anmeldung</a>
