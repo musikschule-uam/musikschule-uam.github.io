@@ -4,6 +4,7 @@ body {
 
     --app-surface: white;
     --app-on-surface: black;
+    --app-surface-container-low: #f3f3fa;
 
 
     --app-surface-variant: #1f1f1f;
@@ -11,13 +12,15 @@ body {
 
     --app-on-surface-variant: white;
 
-    --app-primary: #1a94f3;
+    --app-primary: #004d9e;
+    --app-primary-container: #d6e3ff;
     --app-on-primary: white;
 
     --app-secondary: #38a1f1;
     --app-on-secondary: white;
 
-    --app-ternary: #f6c96f;
+    --app-ternary: #ffcb00;
+    --app-ternary-container: #ffcb00;
     --app-on-ternary: black;
 
     --app-font: 500 18px system-ui, sans-serif;

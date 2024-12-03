@@ -6,14 +6,15 @@ template.innerHTML = `
 <style>
     header {
         padding: 8px 16px 8px 16px;
-        color: var(--app-on-primary);
-        background-color: var(--app-primary);
+        color: var(--app-primary);
+        background-color: var(--app-surface-container-low);
 
         font: var(--app-font);
 
         display: flex;
         flex-direction: column; 
         gap: 8px;
+        border-bottom: 2px solid var(--app-primary);
     }
 
     @media(min-width: 1000px) {
@@ -23,6 +24,10 @@ template.innerHTML = `
     }
 
     #title {
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    	gap: 8px;
         font: var(--app-font-title);
     }
 
@@ -35,7 +40,7 @@ template.innerHTML = `
 
     nav a {
         color: var(--app-on-secondary);
-        background-color: var(--app-secondary);
+        background-color: var(--app-primary);
         text-decoration: none;
         
         font-size: 20px;
@@ -48,7 +53,7 @@ template.innerHTML = `
     }
 
     nav a.accent {
-        background-color: var(--app-ternary);
+        background-color: var(--app-ternary-container);
         color: var(--app-on-ternary);
     }
 
@@ -63,8 +68,11 @@ template.innerHTML = `
 </style>
 
 <header>
-    <div id="title">Musikschule Unterallg\xE4u</div>
-
+	<div id="title">
+    	<img width="32px" height="32px" src="/images/logo.png">
+   		<div>Musikschule Unterallg\xE4u</div>
+	</div>
+	
     <nav id="nav">
         <a href="/">Home</a>
         <a class="accent" href="/anmeldungen.html">Anmeldung</a>
@@ -468,18 +476,23 @@ template6.innerHTML = `
     justify-content: space-between;
     align-items: flex-start;
 
-    background-color: lightgrey;
 
     height: calc(5 * 32px);
     width: calc(10 * 32px);
     padding: 8px;
     border-radius: 2px;
-
-    filter: brightness(1.1);
-
+    backdrop-filter: brightness(1.1);
+    
     cursor: pointer;
     user-select: none;
 }
+
+#container {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-color: lightgrey;
+}
+
 #modal {
     display: none;
 }
@@ -504,7 +517,7 @@ slot[name=action] {
     align-self: flex-end;
 }
 </style>
-
+<div id="container">
 <div id="register">
     <details id="details">
         <summary id="name"></summary>
@@ -514,16 +527,16 @@ slot[name=action] {
     <slot name="action">
     </slot>
 </div>
-
+</div>
 `;
 var MuaRegister = class extends HTMLElement {
   connectedCallback() {
     let root = this.attachShadow({ mode: "closed" });
     root.append(template6.content.cloneNode(true));
     const register = root.getElementById("register");
+    const container = root.getElementById("container");
     const src = this.getAttribute("backgroundsrc");
-    register.style.backgroundImage = `url(${src})`;
-    register.style.backgroundSize = `cover`;
+    container.style.setProperty("--background-image", `url(${src})`);
     const details = root.getElementById("details");
     register.addEventListener("click", (e) => {
       if (e.target == register) {
@@ -542,7 +555,7 @@ template7.innerHTML = `
 <style>
     a {
         color: var(--app-on-secondary);
-        background-color: var(--app-secondary);
+        background-color: var(--app-primary-container);
         text-decoration: none;
 
         font-size: 20px;
@@ -555,7 +568,7 @@ template7.innerHTML = `
     }
 
     a.accent {
-        background-color: var(--app-ternary);
+        background-color: var(--app-ternary-container);
         color: var(--app-on-ternary);
     }
 
