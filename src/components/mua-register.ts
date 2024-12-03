@@ -9,18 +9,23 @@ template.innerHTML = `
     justify-content: space-between;
     align-items: flex-start;
 
-    background-color: lightgrey;
 
     height: calc(5 * 32px);
     width: calc(10 * 32px);
     padding: 8px;
     border-radius: 2px;
-
-    filter: brightness(1.1);
-
+    backdrop-filter: brightness(1.1);
+    
     cursor: pointer;
     user-select: none;
 }
+
+#container {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-color: lightgrey;
+}
+
 #modal {
     display: none;
 }
@@ -45,7 +50,7 @@ slot[name=action] {
     align-self: flex-end;
 }
 </style>
-
+<div id="container">
 <div id="register">
     <details id="details">
         <summary id="name"></summary>
@@ -55,7 +60,7 @@ slot[name=action] {
     <slot name="action">
     </slot>
 </div>
-
+</div>
 `
 
 class MuaRegister extends HTMLElement {
@@ -64,9 +69,10 @@ class MuaRegister extends HTMLElement {
         root.append(template.content.cloneNode(true))
 
         const register = root.getElementById('register') as HTMLDivElement;
+        const container = root.getElementById('container') as HTMLDivElement;
         const src = this.getAttribute('backgroundsrc');
-        register.style.backgroundImage = `url(${src})`;
-        register.style.backgroundSize = `cover`;
+        container.style.setProperty('--background-image', `url(${src})`);
+    
 
         const details = root.getElementById('details') as HTMLDetailsElement;
         register.addEventListener('click', e => {
