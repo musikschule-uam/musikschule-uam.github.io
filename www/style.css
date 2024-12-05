@@ -24,7 +24,7 @@ body {
     --app-on-ternary: black;
 
     --app-font: 500 18px system-ui, sans-serif;
-    --app-font-title: 600 28px system-ui, sans-serif;
+    --app-font-title: 600 24px system-ui, sans-serif;
     --app-font-heading: 600 24px system-ui, sans-serif;
 
     font: var(--app-font);
